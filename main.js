@@ -106,10 +106,12 @@ const processRecitersData = () => {
     listItem.setAttribute("id", `letter_${letter}`)
     listLetter.setAttribute("id", `letter_${letter}`)
     const innerList = document.createElement("ul");
+    innerList.classList.add("reciterContainer")
     //listItem.textContent = `${letter}: `;
     // Add each name as a separate list item
     for (const reciter of uniqueLetters[letter]) {
       const nameItem = document.createElement("li");
+      nameItem.classList.add("reciterBox")
       nameItem.innerHTML = `
       <a href="reciter.html?${reciter.server.split('/')[3] === "malaysia" ? reciter.server.split('/')[4] : reciter.server.split('/')[3]}" title="${reciter.surah_total === 114 ? 'المصحف كاملا' : `${reciter.surah_total} سورة`}">
         ${reciter.name}
@@ -142,6 +144,7 @@ const processRiwayatData = () => {
 
   uniqueNames.forEach(name => {
     const listItem = document.createElement("li");
+    listItem.classList.add("rewayahBox")
     listItem.textContent = name;
     listItem.setAttribute("id", riwayat.find(rewayah => rewayah.name.startsWith(name)).name.split('-')[0]);
 
@@ -211,10 +214,12 @@ const processUpdatedRecitersData = (rewayaName) => {
     listItem.setAttribute("id", `letter_${letter}`)
     listLetter.setAttribute("id", `letter_${letter}`)
     const innerList = document.createElement("ul");
+    innerList.classList.add("reciterContainer")
     //listItem.textContent = `${letter}: `;
     // Add each name as a separate list item
     for (const reciter of uniqueLetters[letter]) {
       const nameItem = document.createElement("li");
+      nameItem.classList.add("reciterBox")
       nameItem.innerHTML = `
       <a href="reciter.html?${reciter.server_name}" title="${reciter.surah_total === 114 ? 'المصحف كاملا' : `${reciter.surah_total} سورة`}">
         ${reciter.name}
@@ -261,10 +266,12 @@ const showSuggestions = (list) => {
     listItem.setAttribute("id", `letter_${letter}`);
     listLetter.setAttribute("id", `letter_${letter}`);
     const innerList = document.createElement("ul");
+    innerList.classList.add("reciterContainer")
     //listItem.textContent = `${letter}: `;
 
     for (const reciter of reciters) {
       const nameItem = document.createElement("li");
+      nameItem.classList.add("reciterBox")
       nameItem.innerHTML = `
             <a href="reciter.html?${reciter.serverName}" title="${reciter.surahTotal === 114 ? 'المصحف كاملا' : `${reciter.surahTotal} سورة`}">
                 ${reciter.name}

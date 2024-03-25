@@ -4,6 +4,15 @@ let reciterData = []
 let suwarData = []
 let reciterSuwar = []
 
+const audio = document.querySelector('.quranPlayer'),
+  surahContainer = document.querySelector('.surahList'),
+  ayah = document.querySelector('.ayah'),
+  next = document.querySelector('.next'),
+  prev = document.querySelector('.previous'),
+  play = document.querySelector('.play'),
+  pause = document.querySelector('.play'),
+  title = document.getElementById('title');
+
 const input = document.querySelector(".searchInput").querySelector("input")
 
 let filteredSuggestions = []
@@ -117,7 +126,7 @@ console.log(reciterInfo)
   const surahNumbers = reciterData.surah_list.split(",");
 
   // Get the ul element
-  const ul = document.getElementById("surahList");
+  const ul = document.querySelector(".surahList");
   const info = document.getElementById("info")
 
   info.innerHTML = `<h1>${reciterData.name}</h1>
@@ -126,18 +135,23 @@ console.log(reciterInfo)
   // Loop through the surah numbers and create list items
   surahNumbers.forEach((surahNumber) => {
     filteredSuggestions.push({ surahName: suwarData.suwar[surahNumber - 1].name, surahNumber: surahNumber, surahServer: reciterData.server + surahNumber.padStart(3, '0') + '.mp3' })
-    const li = document.createElement("li");
+    const li = document.createElement("div");
+    li.setAttribute("id", surahNumber);
+    li.classList.add("surahBox")
     //console.log(surahNumber)
-    li.innerHTML = `<h1>${suwarData.suwar[surahNumber - 1].name}</h1><audio controls id="${surahNumber}" src="${reciterData.server}${surahNumber.padStart(3, '0')}.mp3" preload="none" onclick="playAudio('${surahNumber}')"></audio>`;
+    li.innerHTML = `<p>${surahNumber}. ${suwarData.suwar[surahNumber - 1].name}</p>`;
+    //li.innerHTML = `<h1>${suwarData.suwar[surahNumber - 1].name}</h1><audio controls id="${surahNumber}" src="${reciterData.server}${surahNumber.padStart(3, '0')}.mp3" preload="none" onclick="playAudio('${surahNumber}')"></audio>`;
     ul.appendChild(li);
   })
+
+  plz()
 }
 
-document.querySelectorAll("audio").forEach(a => {
+/* document.querySelectorAll("audio").forEach(a => {
   a.addEventListener("play", () => {
     document.querySelectorAll("audio").forEach(o => o !== a && o.pause());
   });
-})
+}) */
 
 const loadSuwarData = async () => {
   try {
@@ -165,27 +179,31 @@ loadSuwarData()
 
 input.addEventListener("input", e => {
   const userData = e.target.value.toLowerCase();
-  document.getElementById('surahList').innerHTML = ''
+  document.querySelector('.surahList').innerHTML = ''
   showSuggestions(filteredSuggestions.filter(data => data.surahName.toLowerCase().match(userData) || data.surahNumber.match(userData)));
 })
 
 const showSuggestions = (list) => {
-  const ul = document.getElementById("surahList");
+  const ul = document.querySelector(".surahList");
 
   for (const surah of list) {
-    const li = document.createElement("li");
-    li.innerHTML = `<h1>${surah.surahName}</h1><audio controls id="${surah.surahNumber}" src="${surah.surahServer}" preload="none" onclick="playAudio('${surah.surahNumber}')"></audio>`;
+    const li = document.createElement("div");
+    li.setAttribute("id", surah.surahNumber);
+    li.classList.add("surahBox")
+    li.innerHTML = `<p>${surah.surahNumber}. ${surah.surahName}</p>`;
+    //li.innerHTML = `<h1>${surah.surahName}</h1><audio controls id="${surah.surahNumber}" src="${surah.surahServer}" preload="none" onclick="playAudio('${surah.surahNumber}')"></audio>`;
     ul.appendChild(li);
   }
+  plz()
 }
 
 const processUpdatedRecitersData = (rewayaName) => {
-  document.getElementById("surahList").innerHTML = ''
+  document.querySelector(".surahList").innerHTML = ''
   filteredSuggestions = []
   const surahNumbers = rewayaName[0].surah_list.split(",");
 
   // Get the ul element
-  const ul = document.getElementById("surahList");
+  const ul = document.querySelector(".surahList");
 
   const info = document.getElementById("info")
   console.log(reciterData)
@@ -196,10 +214,14 @@ const processUpdatedRecitersData = (rewayaName) => {
   surahNumbers.forEach((surahNumber) => {
     console.log(rewayaName[0].server)
     filteredSuggestions.push({ surahName: suwarData.suwar[surahNumber - 1].name, surahNumber: surahNumber, surahServer: rewayaName[0].server + surahNumber.padStart(3, '0') + '.mp3' })
-    const li = document.createElement("li");
-    li.innerHTML = `<h1>${suwarData.suwar[surahNumber - 1].name}</h1><audio controls id="${surahNumber}" src="${rewayaName[0].server}${surahNumber.padStart(3, '0')}.mp3" preload="none" onclick="playAudio('${surahNumber}')"></audio>`;
+    const li = document.createElement("div");
+    li.setAttribute("id", surahNumber);
+    li.classList.add("surahBox")
+    li.innerHTML = `<p>${surahNumber}. ${suwarData.suwar[surahNumber - 1].name}</p>`;
+    //li.innerHTML = `<h1>${suwarData.suwar[surahNumber - 1].name}</h1><audio controls id="${surahNumber}" src="${rewayaName[0].server}${surahNumber.padStart(3, '0')}.mp3" preload="none" onclick="playAudio('${surahNumber}')"></audio>`;
     ul.appendChild(li);
   })
+  plz()
 }
 
 const processRiwayatData = () => {
@@ -216,6 +238,7 @@ const processRiwayatData = () => {
 
   riwayat.forEach(rewayah => {
     const listItem = document.createElement("li");
+    listItem.classList.add("rewayahBox")
     listItem.textContent = rewayah.moshaf_name;
     listItem.setAttribute("id", rewayah.moshaf_name);
     myList.appendChild(listItem)
@@ -224,6 +247,34 @@ const processRiwayatData = () => {
   document.querySelector(".rewayah-list").appendChild(myList);
 
   processRiwayatDropdown(riwayat);
+}
+
+const plz = () => {
+  document.querySelectorAll('.surahBox').forEach(surahBox => {
+    surahBox.addEventListener('click', function () {
+      index = this.id
+      play(this.id)
+    });
+  });
+
+  prev.addEventListener('click', () => {
+    (index > 0) ? index-- : index;
+    play(index);
+  })
+
+  pause.addEventListener('click', () => {
+    play(index).pause();
+  })
+
+  next.addEventListener('click', () => {
+    (index < 114) ? index++ : index;
+    play(index);
+  })
+
+  const play = (id) => {
+    audio.src = `${reciterData.server}${(id).toString().padStart(3, '0')}.mp3`;
+    title.innerText = `${id}. ${suwarData.suwar[id - 1].name}`;
+  }
 }
 
 // dropdown menu

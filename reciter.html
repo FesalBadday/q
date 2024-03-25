@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="#">
   <title>Surah List</title>
+  <script src="https://kit.fontawesome.com/1694914d74.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="main.css">
   <script src="reciter.js" defer></script>
 </head>
@@ -13,26 +14,39 @@
 <body>
   <div class="loader"><span></span><span></span><span></span><span></span></div>
 
-  <div class="containers">
-    <div class="dropdown">
-      <div class="select">
-        <span>اختر الرواية / نوع المصحف</span>
-        <i class="fa fa-chevron-left"></i>
+  <div class="container">
+    <div class="player">
+      <div class="containers">
+        <div class="dropdown">
+          <div class="select">
+            <span>اختر الرواية / نوع المصحف</span>
+            <i class="fa fa-chevron-left"></i>
+          </div>
+          <input type="hidden" name="rewayah">
+          <div class="rewayah-list">
+          </div>
+        </div>
       </div>
-      <input type="hidden" name="rewayah">
-      <div class="rewayah-list">
+
+      <div class="container">
+        <div class="searchInput">
+          <input class="surahSearch" type="text" placeholder="بحث بإسم/رقم السورة">
+        </div>
       </div>
-    </div>
+
+      <div id="info"></div>
+
+      <div class="title" id="title"></div>
+      <audio src="" class="quranPlayer" controls autoplay></audio>
+      <div class="buttons">
+        <div class="icon next"><i class="fa-solid fa-forward"></i></div>
+        <div class="icon play"><i class="fa-solid fa-play"></i></div>
+        <div class="icon previous"><i class="fa-solid fa-backward"></i></div>
+      </div>
     </div>
 
-    <div class="container">
-      <div class="searchInput">
-        <input class="surahSearch" type="text" placeholder="بحث بإسم/رقم السورة">
-      </div>
-    </div>
-
-    <div id="info"></div>
-    <div id="surahList"></div>
+    <div class="surahList"></div>
+  </div>
 </body>
 
 </html>
