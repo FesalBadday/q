@@ -281,7 +281,7 @@ const plz = () => {
     //audio.src = `${reciterData.server}${(id).toString().padStart(3, '0')}.mp3`;
     audio.src = server
     /* title.innerText = `${id}. ${suwarData.suwar[id - 1].name}`; */
-    title.innerHTML = `${id}. ${name} ( <a href="${server}" download>تحميل السورة</a> )`;
+    title.innerHTML = `${id}. ${name} ( <a href="/${server}" download="${name}">تحميل السورة</a> )`;
   }
 }
 
