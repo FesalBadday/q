@@ -1,0 +1,70 @@
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" type="image/png"
+    href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+  <meta name="apple-mobile-web-app-title" content="CodePen">
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+  <link rel="mask-icon" type="image/x-icon"
+    href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
+    color="#111">
+  <title>CodePen - audio player using web components</title>
+  <script
+    src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js" defer></script>
+  <link rel="stylesheet" href="audio.css">
+  <script type="module" src="audio.js" defer></script>
+
+
+
+
+  <script>
+    window.console = window.console || function (t) { };
+  </script>
+
+
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage("resize", "*");
+    }
+  </script>
+
+
+</head>
+
+<body translate="no">
+
+    <style>
+
+    </style>
+    <div id="audio-player-container">
+      <audio src="" preload="metadata" loop=""></audio>
+      <p>audio player ish</p>
+      <button id="play-icon"></button>
+      <span id="current-time" class="time">0:00</span>
+      <input type="range" id="seek-slider" max="100" value="0">
+      <span id="duration" class="time">0:00</span>
+      <output id="volume-output">100</output>
+      <input type="range" id="volume-slider" max="100" value="100">
+      <button id="mute-icon"></button>
+    </div>
+
+
+  <audio-player data-src="https://assets.codepen.io/4358584/Anitek_-_Komorebi.mp3"></audio-player>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
