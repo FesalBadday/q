@@ -127,10 +127,10 @@ console.log(reciterInfo)
 
   // Get the ul element
   const ul = document.querySelector(".surahList");
-  const info = document.getElementById("info")
+  const info = document.querySelector(".info")
 
-  info.innerHTML = `<h1>${reciterData.name}</h1>
-    <p>${reciterData.moshaf_name}</p>`
+  info.innerHTML = `<h2>${reciterData.name}</h2>
+    <h4>${reciterData.moshaf_name}</h4>`
 
   // Loop through the surah numbers and create list items
   surahNumbers.forEach((surahNumber) => {
@@ -169,6 +169,7 @@ const loadSuwarData = async () => {
     if (suwarDataExists) processSuwarData();
     if (reciterSuwarDataExists) processRiwayatData();
     loader.style.display = 'none'
+    document.querySelector(".container").style.display = 'block'
     if (!suwarDataExists) console.error('Suwar data is not available.');
     if (!reciterSuwarDataExists) console.error('Reciter Suwar data is not available.');
   } catch (error) {
@@ -204,15 +205,16 @@ const showSuggestions = (list) => {
 const processUpdatedRecitersData = (rewayaName) => {
   document.querySelector(".surahList").innerHTML = ''
   filteredSuggestions = []
+  console.log(rewayaName)
   const surahNumbers = rewayaName[0].surah_list.split(",");
 
   // Get the ul element
   const ul = document.querySelector(".surahList");
 
-  const info = document.getElementById("info")
+  const info = document.querySelector(".info")
   console.log(reciterData)
-  info.innerHTML = `<h1>${reciterData.name}</h1>
-    <p>${rewayaName[0].moshaf_name}</p>`
+  info.innerHTML = `<h2>${reciterData.name}</h2>
+    <h4>${rewayaName[0].moshaf_name}</h4>`
 
   // Loop through the surah numbers and create list items
   surahNumbers.forEach((surahNumber) => {
@@ -252,12 +254,16 @@ const processRiwayatData = () => {
 
   document.querySelector(".rewayah-list").appendChild(myList);
 
+  /* if (riwayat.length > 1) {
+    document.querySelector('.dropdown').style.display = 'inline-block'
+  } */
   processRiwayatDropdown(riwayat);
 }
 
 const plz = () => {
   document.querySelectorAll('.surahBox').forEach(surahBox => {
     surahBox.addEventListener('click', function () {
+      document.querySelector('.quranPlayer').style.display = 'block'
       index = surahBox.getAttribute("id")
       play(surahBox.getAttribute("id"), surahBox.getAttribute("name"), surahBox.getAttribute("server"))
     });
@@ -281,7 +287,26 @@ const plz = () => {
     //audio.src = `${reciterData.server}${(id).toString().padStart(3, '0')}.mp3`;
     audio.src = server
     /* title.innerText = `${id}. ${suwarData.suwar[id - 1].name}`; */
-    title.innerHTML = `${id}. ${name} ( <a href="/${server}" download="${name}">تحميل السورة</a> )`;
+    //title.innerHTML = `${id}. ${name} ( <a href="${server}">تحميل السورة</a> )`;
+    title.innerHTML = `${id}. ${name} ( <span class="downloadSurah">تحميل السورة</span> )`;
+
+    document.querySelector(".downloadSurah").addEventListener('click', () => {
+      downloadSurah(server, name)
+    })
+  }
+
+  const downloadSurah = async (url, surahName) => {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Network error: ${response.status} ${response.statusText}`);
+      const blob = await response.blob();
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = surahName;
+      a.click();
+    } catch (error) {
+      console.error("Error downloading:", error);
+    }
   }
 }
 

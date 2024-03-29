@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700;800;1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap');
 
 * {
   /* margin: 0; */
@@ -9,34 +9,58 @@
 }
 
 body {
-  /* background: #000; */
-  font-family: 'Cairo', sans-serif;
-  /* font-weight: bold;
-  color: #00ffff; */
+  font-family: "Noto Kufi Arabic", sans-serif;
+  font-weight: 700;
   direction: rtl;
   background: url(/img/image.png) center center/cover no-repeat fixed;
 }
 
 .mainPage {
-  display: flex;
+  display: none;
+  flex-wrap: wrap-reverse;
+  gap: 1rem;
+  justify-content: space-between;
+  margin: 2rem 0 4rem 0;
 }
 
 a {
-  color: #ffd000;
+  /* color: #ffd000; */
+  color: ghostwhite;
   text-decoration: none;
 }
 
 a:hover {
-  color: #ff0000;
+  /* color: #ff0000; */
+  color: #ffd000;
+}
+
+.downloadSurah {
+  color: #ffd000;
+  cursor: pointer;
+}
+
+.downloadSurah:hover {
+  color: #51ff00dc;
 }
 
 .letter {
-  background-color: #00ffd5;
-  border: 10px solid #00ffbf;
-  border-radius: 10px;
+  /* background-color: #ffd000;
+  border-radius: 10%;
   color: #000;
-  width: 20px;
+  width: 50px;
   text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030; */
+
+  background: #64ad15;
+  color: ghostwhite;
+  display: inline-block;
+  width: 35px;
+  border-radius: 10px 10px 10px 0;
+  padding: 5px;
+  margin-top: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px 0 #64ad1578;
 }
 
 .reciterContainer {
@@ -44,38 +68,59 @@ a:hover {
   flex-wrap: wrap;
   gap: 1rem;
   list-style: none;
+
+}
+
+.namesContainers {
+  display: flex;
+  justify-content: space-between;
+  /* gap: 1rem; */
 }
 
 .reciterBox {
-  border: 12px solid #000;
+  /* border: 10px solid #000;
+  background-color: #000;
   border-radius: 7px;
-  box-shadow: 0px 0px 7px 3px #00ffd5;
+  box-shadow: 0px 0px 5px 1px #51ff00dc;
   list-style: none;
+  font-weight: bold; */
+
+  background-color: #000;
+  border-radius: 10%;
+  box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
+  /* font-weight: 700; */
+  /* direction: rtl; */
+  width: clamp(260px, 24vw, 500px);
+  transition: .5s color ease;
+  cursor: pointer;
+  padding: 10px;
 }
 
 .title {
   max-width: 1170px;
   margin: 10px auto 0;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .container {
+  display: none;
   width: 100%;
   margin: 0 auto;
 }
 
 .player {
-  background: linear-gradient(to right, black, #434343);
+  background: #535353;
   padding: 20px;
   margin: 10px 0;
   border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #000;
 }
 
 .player .title {
   padding: 10px 0;
   font-size: 20px;
   color: ghostwhite;
-  font-weight: 700;
+  /* font-weight: 700; */
   text-align: center;
 }
 
@@ -118,7 +163,7 @@ a:hover {
   background-color: ghostwhite;
   border-radius: 20%;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  font-weight: bold;
+  /* font-weight: bold; */
   /* direction: rtl; */
   width: clamp(150px, 15vw, 300px);
   transition: .5s color ease;
@@ -166,21 +211,41 @@ a:hover {
 
 .containers {
   display: flex;
-  align-items: start;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.surahSearch, .reciterSearch {
+  width: 200px;
+  height: 50px;
+  background-color: ghostwhite;
+  font-size: 18px;
+  /* font-weight: bold; */
+  border: hidden;
+  border-radius: 2px;
+  color: #474747;
+  padding-right: 10px
+}
+
+.info {
+  color: ghostwhite;
+}
+
+.quranPlayer {
+  display: none;
 }
 
 /*Styling Selectbox*/
 .dropdown {
   width: 300px;
   display: inline-block;
-  background-color: #fff;
+  background-color: ghostwhite;
   border-radius: 2px;
   box-shadow: 0 0 2px rgb(204, 204, 204);
   transition: all .5s ease;
   position: relative;
   font-size: 16px;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #474747;
   /* height: 100%; */
   text-align: right

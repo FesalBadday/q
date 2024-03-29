@@ -137,7 +137,7 @@ const processRiwayatData = () => {
   const allReciters = document.createElement("li")
   allReciters.classList.add("all-reciters")
   allReciters.setAttribute("id", "")
-  allReciters.textContent = "الكل"; // Set some content
+  allReciters.textContent = "الكل";
 
   const uniqueNames = new Set();
   riwayat.forEach(rewayah => uniqueNames.add(rewayah.name.split('-')[0]));
@@ -169,9 +169,9 @@ const processUpdatedRecitersData = (rewayaName) => {
 
   // Filter reciters based on moshaf name
   const rewayaUpdatedReciters = reciters.filter(reciter =>
-    reciter.moshaf.some(moshaf => rewayaName === moshaf.name.split('-')[0] || rewayaName === '')
+    reciter.moshaf.some(moshaf => rewayaName === moshaf.name.split(' - ')[0] || rewayaName === '')
   ).map(reciter => {
-    const matchingMoshaf = reciter.moshaf.find(m => m.name.split('-')[0] === rewayaName);
+    const matchingMoshaf = reciter.moshaf.find(m => m.name.split(' - ')[0] === rewayaName);
     return {
       id: reciter.id,
       name: reciter.name,
@@ -301,6 +301,7 @@ const loadRecitersRiwayatData = async () => {
     if (recitersDataExists) processRecitersData();
     if (riwayatDataExists) processRiwayatData();
     loader.style.display = 'none'
+    document.querySelector(".mainPage").style.display = 'flex'
     if (!recitersDataExists && !riwayatDataExists) console.error('Reciters/Riwayat data is not available.');
   } catch (error) {
     console.error('An error occurred while loading Reciters/Riwayat data:', error);
