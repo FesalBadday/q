@@ -52,7 +52,7 @@ a:hover {
   font-weight: bold;
   box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030; */
 
-  background: #64ad15;
+  background: #15b3c1;
   color: ghostwhite;
   display: inline-block;
   width: 35px;
@@ -60,7 +60,7 @@ a:hover {
   padding: 5px;
   margin-top: 1rem;
   text-align: center;
-  box-shadow: 0 2px 8px 0 #64ad1578;
+  box-shadow: 0 2px 8px 0 #15b3c186;
 }
 
 .reciterContainer {

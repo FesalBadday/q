@@ -159,6 +159,7 @@ const processRiwayatData = () => {
 }
 
 const processUpdatedRecitersData = (rewayaName) => {
+  input.value = "";
   boxNames_uiElement.innerHTML = ''
   document.querySelector('.lettersContainer').innerHTML = ''
   const reciters = recitersData?.reciters || [];

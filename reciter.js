@@ -204,6 +204,7 @@ const showSuggestions = (list) => {
 
 const processUpdatedRecitersData = (rewayaName) => {
   document.querySelector(".surahList").innerHTML = ''
+  input.value = "";
   filteredSuggestions = []
   console.log(rewayaName)
   const surahNumbers = rewayaName[0].surah_list.split(",");
