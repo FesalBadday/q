@@ -6,11 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="#">
   <title>Surah List</title>
-  <!-- <script src="https://kit.fontawesome.com/1694914d74.js" crossorigin="anonymous"></script> -->
   <link rel="stylesheet" href="main.css">
-  <!-- <link rel="stylesheet" href="audio.css"> -->
   <script src="reciter.js" defer></script>
-  <!-- <script src="audio.js" defer></script> -->
 </head>
 
 <body>
@@ -19,10 +16,9 @@
   <div class="container">
     <div class="player">
       <div class="containers">
-        <div class="dropdown">
+        <div id="d-reciter" class="dropdown">
           <div class="select">
             <span>اختر الرواية / نوع المصحف</span>
-            <i class="fa fa-chevron-left"></i>
           </div>
           <input type="hidden" name="rewayah">
           <div class="rewayah-list">
@@ -39,11 +35,6 @@
 
       <div class="title" id="title"></div>
       <audio src="" class="quranPlayer" controls autoplay></audio>
-      <!-- <div class="buttons">
-        <div class="icon next"><i class="fa-solid fa-forward"></i></div>
-        <div class="icon play"><i class="fa-solid fa-play"></i></div>
-        <div class="icon previous"><i class="fa-solid fa-backward"></i></div>
-      </div> -->
     </div>
 
     <div class="surahList"></div>

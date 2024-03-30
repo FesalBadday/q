@@ -207,6 +207,10 @@ a:hover {
   display: none;
 }
 
+#d-reciter {
+  display: none;
+}
+
 .dropdown {
   width: 300px;
   display: inline-block;

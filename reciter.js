@@ -7,10 +7,7 @@ let reciterSuwar = []
 const audio = document.querySelector('.quranPlayer'),
   surahContainer = document.querySelector('.surahList'),
   ayah = document.querySelector('.ayah'),
-  //next = document.querySelector('.next'),
-  //prev = document.querySelector('.previous'),
   play = document.querySelector('.play'),
-  //pause = document.querySelector('.play'),
   title = document.getElementById('title');
 
 const input = document.querySelector(".searchInput").querySelector("input")
@@ -53,12 +50,6 @@ const fetchReciter = async () => {
   // Check if data is already in sessionStorage
   const storedReciterSuwar = sessionStorage.getItem('reciterSuwar');
 
-  /* if (storedReciterSuwar) {
-    console.log('Data retrieved from sessionStorage:', JSON.parse(storedReciterSuwar));
-    reciterSuwar = JSON.parse(storedReciterSuwar)
-    return JSON.parse(storedReciterSuwar);
-  } */
-
   try {
     const reciterInfo = JSON.parse(sessionStorage.getItem('reciterInfo'))
     const nameFromUrl = window.location.search.substring(1); // Remove the leading slash
@@ -89,39 +80,6 @@ const fetchReciter = async () => {
 }
 
 const processSuwarData = () => {
-  /* const reciterInfo = JSON.parse(sessionStorage.getItem('reciterInfo'))
-  const nameFromUrl = window.location.search.substring(1); // Remove the leading slash
-console.log(reciterInfo)
-  if (reciterInfo === null) {
-    console.log("Empty")
-    window.location.replace("/")
-  } else {
-    for (const reciterId in reciterInfo) {
-      for (const reciter of reciterInfo[reciterId]) {
-        //if (reciter.server_name.toLowerCase() === nameFromUrl.toLowerCase()) { console.log(reciterData) }
-      }
-    }
-  } */
-
-  /* const nameFromUrl = window.location.search.substring(1); // Remove the leading slash
-  console.log(reciterData)
-  for (const reciter of reciterSuwar.reciters) {
-    for (const moshafItem of reciter.moshaf) {
-      if (moshafItem?.server.split('/')[3].toLowerCase() === "malaysia" ? moshafItem?.server.split('/')[4].toLowerCase() : moshafItem?.server.split('/')[3].toLowerCase() === nameFromUrl.toLowerCase()) { console.log(reciterData) }
-    }
-  } */
-
-  /* for (const reciterId of reciterSuwar.reciters) {
-    console.log(reciterId)
-    for (const reciter of reciterSuwar.moshaf[reciterId]) {
-      if (reciter.server_name.toLowerCase() === nameFromUrl.toLowerCase()) { reciterData = reciter }
-      //riwayat.push({ moshaf_name: moshafItem.name.split('-')[0], server: moshafItem.server, surah_list: moshafItem.surah_list })
-    }
-  } */
-
-  //console.log(reciterData)
-  //console.log(reciterSuwar.reciters)
-
   // Split the surah_list into an array of surah numbers
   const surahNumbers = reciterData.surah_list.split(",");
 
@@ -140,20 +98,12 @@ console.log(reciterInfo)
     li.setAttribute("name", suwarData.suwar[surahNumber - 1].name);
     li.setAttribute("server", reciterData.server + surahNumber.padStart(3, '0') + '.mp3');
     li.classList.add("surahBox")
-    //console.log(surahNumber)
     li.innerHTML = `<p>${surahNumber}. ${suwarData.suwar[surahNumber - 1].name}</p>`;
-    //li.innerHTML = `<h1>${suwarData.suwar[surahNumber - 1].name}</h1><audio controls id="${surahNumber}" src="${reciterData.server}${surahNumber.padStart(3, '0')}.mp3" preload="none" onclick="playAudio('${surahNumber}')"></audio>`;
     ul.appendChild(li);
   })
 
   plz()
 }
-
-/* document.querySelectorAll("audio").forEach(a => {
-  a.addEventListener("play", () => {
-    document.querySelectorAll("audio").forEach(o => o !== a && o.pause());
-  });
-}) */
 
 const loadSuwarData = async () => {
   try {
@@ -196,7 +146,6 @@ const showSuggestions = (list) => {
     li.setAttribute("server", surah.surahServer);
     li.classList.add("surahBox")
     li.innerHTML = `<p>${surah.surahNumber}. ${surah.surahName}</p>`;
-    //li.innerHTML = `<h1>${surah.surahName}</h1><audio controls id="${surah.surahNumber}" src="${surah.surahServer}" preload="none" onclick="playAudio('${surah.surahNumber}')"></audio>`;
     ul.appendChild(li);
   }
   plz()
@@ -227,7 +176,6 @@ const processUpdatedRecitersData = (rewayaName) => {
     li.setAttribute("server", rewayaName[0].server + surahNumber.padStart(3, '0') + '.mp3');
     li.classList.add("surahBox")
     li.innerHTML = `<p>${surahNumber}. ${suwarData.suwar[surahNumber - 1].name}</p>`;
-    //li.innerHTML = `<h1>${suwarData.suwar[surahNumber - 1].name}</h1><audio controls id="${surahNumber}" src="${rewayaName[0].server}${surahNumber.padStart(3, '0')}.mp3" preload="none" onclick="playAudio('${surahNumber}')"></audio>`;
     ul.appendChild(li);
   })
   plz()
@@ -255,10 +203,10 @@ const processRiwayatData = () => {
 
   document.querySelector(".rewayah-list").appendChild(myList);
 
-  /* if (riwayat.length > 1) {
+  if (riwayat.length > 1) {
     document.querySelector('.dropdown').style.display = 'inline-block'
-  } */
-  processRiwayatDropdown(riwayat);
+    processRiwayatDropdown(riwayat);
+  }
 }
 
 const plz = () => {
@@ -270,25 +218,9 @@ const plz = () => {
     });
   });
 
-  /* prev.addEventListener('click', () => {
-    (index > 0) ? index-- : index;
-    play(index);
-  })
-
-  pause.addEventListener('click', () => {
-    play(index).pause();
-  })
-
-  next.addEventListener('click', () => {
-    (index < 114) ? index++ : index;
-    play(index);
-  }) */
 
   const play = (id, name, server) => {
-    //audio.src = `${reciterData.server}${(id).toString().padStart(3, '0')}.mp3`;
     audio.src = server
-    /* title.innerText = `${id}. ${suwarData.suwar[id - 1].name}`; */
-    //title.innerHTML = `${id}. ${name} ( <a href="${server}">تحميل السورة</a> )`;
     title.innerHTML = `${id}. ${name} ( <span class="downloadSurah">تنزيل السورة</span> )`;
 
     document.querySelector(".downloadSurah").addEventListener('click', () => {
