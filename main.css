@@ -10,8 +10,9 @@ body {
   font-family: "Noto Kufi Arabic", sans-serif;
   font-weight: 700;
   direction: rtl;
-  background: url(img/image10.png) center center/cover no-repeat fixed;
+  background: url(img/image10.png) center center/contain fixed;
   margin: 0;
+  height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -84,7 +85,6 @@ a:hover {
   flex-wrap: wrap;
   gap: 1rem;
   list-style: none;
-
 }
 
 .namesContainers {
@@ -96,7 +96,7 @@ a:hover {
 .reciterBox {
   background-color: #000;
   border-radius: 10%;
-  box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
+  box-shadow: 0px 0px 10px 0px #000;
   width: clamp(260px, 24vw, 500px);
   transition: .5s color ease;
   cursor: pointer;
@@ -157,6 +157,7 @@ a:hover {
   justify-content: space-evenly;
   flex-wrap: wrap;
   gap: 10px;
+  margin: 1rem 0;
 }
 
 .surahList::-webkit-scrollbar {
