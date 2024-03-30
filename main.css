@@ -10,9 +10,8 @@ body {
   font-family: "Noto Kufi Arabic", sans-serif;
   font-weight: 700;
   direction: rtl;
-  background: url(img/image10.png) center center/contain fixed;
+  background: url(img/image10.png) center center/100% fixed;
   margin: 0;
-  height: auto calc(100vh + 100px);
 }
 
 ::-webkit-scrollbar {
