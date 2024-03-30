@@ -5,8 +5,6 @@ let suwarData = []
 let reciterSuwar = []
 
 const audio = document.querySelector('.quranPlayer'),
-  surahContainer = document.querySelector('.surahList'),
-  ayah = document.querySelector('.ayah'),
   play = document.querySelector('.play'),
   title = document.getElementById('title');
 
@@ -186,7 +184,7 @@ const processRiwayatData = () => {
 
   for (const reciter of reciterSuwar.reciters) {
     for (const moshafItem of reciter.moshaf) {
-      riwayat.push({ moshaf_name: moshafItem.name.split('-')[0], server: moshafItem.server, surah_list: moshafItem.surah_list })
+      riwayat.push({ moshaf_name: moshafItem.name.split(' - ')[0], server: moshafItem.server, surah_list: moshafItem.surah_list })
     }
   }
 
@@ -224,18 +222,18 @@ const plz = () => {
     title.innerHTML = `${id}. ${name} ( <span class="downloadSurah">تنزيل السورة</span> )`;
 
     document.querySelector(".downloadSurah").addEventListener('click', () => {
-      downloadSurah(server, name)
+      downloadSurah(server, name, id)
     })
   }
 
-  const downloadSurah = async (url, surahName) => {
+  const downloadSurah = async (url, surahName, surahId) => {
     try {
       const response = await fetch(url);
       if (!response.ok) throw new Error(`Network error: ${response.status} ${response.statusText}`);
       const blob = await response.blob();
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = surahName;
+      a.download = surahName + " - " + surahId
       a.click();
     } catch (error) {
       console.error("Error downloading:", error);
