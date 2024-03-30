@@ -119,8 +119,8 @@ const processRecitersData = () => {
       innerList.appendChild(nameItem);
     }
 
-    listItem.innerHTML = `<h2 class="letter">${letter}</h2>`;
-    listLetter.innerHTML = `<h2 class="letter"><a href="#letter_${letter}">${letter}</a></h2>`;
+    listItem.innerHTML = `<h2 class="r-letter">${letter}</h2>`;
+    listLetter.innerHTML = `<h2 class="l-letter"><a href="#letter_${letter}">${letter}</a></h2>`;
     listItem.appendChild(innerList);
     boxNames_uiElement.appendChild(listItem);
     document.querySelector('.lettersContainer').appendChild(listLetter);
@@ -228,8 +228,8 @@ const processUpdatedRecitersData = (rewayaName) => {
       innerList.appendChild(nameItem);
     }
 
-    listItem.innerHTML = `<h2 class="letter">${letter}</h2>`;
-    listLetter.innerHTML = `<h2 class="letter"><a href="#letter_${letter}">${letter}</a></h2>`;
+    listItem.innerHTML = `<h2 class="r-letter">${letter}</h2>`;
+    listLetter.innerHTML = `<h2 class="l-letter"><a href="#letter_${letter}">${letter}</a></h2>`;
     listItem.appendChild(innerList);
     boxNames_uiElement.appendChild(listItem);
     document.querySelector('.lettersContainer').appendChild(listLetter);
@@ -280,8 +280,8 @@ const showSuggestions = (list) => {
       innerList.appendChild(nameItem);
     }
 
-    listItem.innerHTML = `<h2 class="letter">${letter}</h2>`;
-    listLetter.innerHTML = `<h2 class="letter"><a href="#letter_${letter}">${letter}</a></h2>`;
+    listItem.innerHTML = `<h2 class="r-letter">${letter}</h2>`;
+    listLetter.innerHTML = `<h2 class="l-letter"><a href="#letter_${letter}">${letter}</a></h2>`;
     listItem.appendChild(innerList);
     boxNames_uiElement.appendChild(listItem);
     document.querySelector('.lettersContainer').appendChild(listLetter);

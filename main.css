@@ -1,18 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap');
 
 * {
-  /* margin: 0; */
   padding: 0;
   box-sizing: content-box;
   outline: none;
-  /* overflow: hidden; */
 }
 
 body {
   font-family: "Noto Kufi Arabic", sans-serif;
   font-weight: 700;
   direction: rtl;
-  background: url(/img/image.png) center center/cover no-repeat fixed;
+  background: url(/img/image10.png) fixed;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #0000001a;
+  background-color: ghostwhite;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear, 40% 0%, 75% 84%, from(#0b8d9e), to(#13d1c1), color-stop(.6, #19adad))
 }
 
 .mainPage {
@@ -20,17 +33,16 @@ body {
   flex-wrap: wrap-reverse;
   gap: 1rem;
   justify-content: space-between;
-  margin: 2rem 0 4rem 0;
+  background-color: #000000ce;
+  padding: .5rem;
 }
 
 a {
-  /* color: #ffd000; */
   color: ghostwhite;
   text-decoration: none;
 }
 
 a:hover {
-  /* color: #ff0000; */
   color: #ffd000;
 }
 
@@ -43,20 +55,24 @@ a:hover {
   color: #51ff00dc;
 }
 
-.letter {
-  /* background-color: #ffd000;
-  border-radius: 10%;
-  color: #000;
-  width: 50px;
-  text-align: center;
-  font-weight: bold;
-  box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030; */
-
+.r-letter {
   background: #15b3c1;
   color: ghostwhite;
   display: inline-block;
   width: 35px;
   border-radius: 10px 10px 10px 0;
+  padding: 5px;
+  margin-top: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 8px 0 #15b3c186;
+}
+
+.l-letter {
+  background: #15b3c1;
+  color: ghostwhite;
+  display: inline-block;
+  width: 35px;
+  border-radius: 10px 10px 0px 10px;
   padding: 5px;
   margin-top: 1rem;
   text-align: center;
@@ -74,22 +90,13 @@ a:hover {
 .namesContainers {
   display: flex;
   justify-content: space-between;
-  /* gap: 1rem; */
+  margin: 1rem;
 }
 
 .reciterBox {
-  /* border: 10px solid #000;
-  background-color: #000;
-  border-radius: 7px;
-  box-shadow: 0px 0px 5px 1px #51ff00dc;
-  list-style: none;
-  font-weight: bold; */
-
   background-color: #000;
   border-radius: 10%;
   box-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
-  /* font-weight: 700; */
-  /* direction: rtl; */
   width: clamp(260px, 24vw, 500px);
   transition: .5s color ease;
   cursor: pointer;
@@ -99,7 +106,6 @@ a:hover {
 .title {
   max-width: 1170px;
   margin: 10px auto 0;
-  /* font-weight: bold; */
 }
 
 .container {
@@ -109,9 +115,9 @@ a:hover {
 }
 
 .player {
-  background: #535353;
+  background: #000000ce;
   padding: 20px;
-  margin: 10px 0;
+  margin: 1rem;
   border-radius: 10px;
   box-shadow: 0px 0px 10px 0px #000;
 }
@@ -120,7 +126,6 @@ a:hover {
   padding: 10px 0;
   font-size: 20px;
   color: ghostwhite;
-  /* font-weight: 700; */
   text-align: center;
 }
 
@@ -163,45 +168,12 @@ a:hover {
   background-color: ghostwhite;
   border-radius: 20%;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-  /* font-weight: bold; */
-  /* direction: rtl; */
   width: clamp(150px, 15vw, 300px);
   transition: .5s color ease;
   cursor: pointer;
   padding: 0px 10px;
   font-size: 20px;
 }
-
-/* .surahList > div .surahBox {
-  color: brown;
-}
-
-.surahList > div::after {
-  content: counter(surah-counter);
-  position: absolute;
-  height: 80px;
-  width: 80px;
-  left: -90px;
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  font-size: 25px;
-  line-height: 80px;
-  text-align: center;
-  background-color: inherit;
-  transition: inherit;
-  box-shadow: inherit;
-}
-
-.surahList > div::before {
-  content: "";
-  position: absolute;
-  border: 7px solid transparent;
-  border-right-color: #23162f;
-  top: 50%;
-  transform: translateY(-50%);
-  left: -14px;
-} */
 
 .surahList>div:hover,
 .surahList>div:hover::after {
@@ -220,7 +192,6 @@ a:hover {
   height: 50px;
   background-color: ghostwhite;
   font-size: 18px;
-  /* font-weight: bold; */
   border: hidden;
   border-radius: 2px;
   color: #474747;
@@ -235,7 +206,6 @@ a:hover {
   display: none;
 }
 
-/*Styling Selectbox*/
 .dropdown {
   width: 300px;
   display: inline-block;
@@ -245,9 +215,7 @@ a:hover {
   transition: all .5s ease;
   position: relative;
   font-size: 16px;
-  /* font-weight: bold; */
   color: #474747;
-  /* height: 100%; */
   text-align: right
 }
 
@@ -333,7 +301,6 @@ a:hover {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  /* background: linear-gradient(#f07e6e, #84cdfa, #5ad1cd); */
   background: linear-gradient(#00ff40, #00ffbf, #00ff80);
   animation: animate 1s linear infinite;
 }
