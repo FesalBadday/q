@@ -289,7 +289,7 @@ const plz = () => {
     audio.src = server
     /* title.innerText = `${id}. ${suwarData.suwar[id - 1].name}`; */
     //title.innerHTML = `${id}. ${name} ( <a href="${server}">تحميل السورة</a> )`;
-    title.innerHTML = `${id}. ${name} ( <span class="downloadSurah">تحميل السورة</span> )`;
+    title.innerHTML = `${id}. ${name} ( <span class="downloadSurah">تنزيل السورة</span> )`;
 
     document.querySelector(".downloadSurah").addEventListener('click', () => {
       downloadSurah(server, name)
