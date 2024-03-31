@@ -143,7 +143,8 @@ const processRiwayatData = () => {
     const listItem = document.createElement("li");
     listItem.classList.add("rewayahBox")
     listItem.textContent = name;
-    listItem.setAttribute("id", riwayat.find(rewayah => rewayah.name.startsWith(name)).name.split('-')[0]);
+    //listItem.setAttribute("id", riwayat.find(rewayah => rewayah.name.startsWith(name)).name.split('-')[0]);
+    listItem.setAttribute("id", name);
 
     const existingElement = document.querySelector(".all-reciters");
     if (!existingElement) myList.appendChild(allReciters);
