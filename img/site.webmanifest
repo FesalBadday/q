@@ -2,8 +2,6 @@
   "name": "Quran",
   "short_name": "Quran",
   "start_url": "/",
-  "display": "standalone",
-  "background_color": "#fff",
   "description": "Quran",
   "icons": [
     {
