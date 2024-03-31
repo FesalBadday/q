@@ -1,16 +1,16 @@
 {
-  "name": "Quran",
-  "short_name": "Quran",
-  "start_url": "/",
-  "description": "Quran",
+  "name": "القرأن الكريم",
+  "short_name": "قرأن",
+  "start_url": "https://fesal.me/q/",
+  "description": "الأستماع الى القرآن الكريم بتلاوة وصوت أكثر من 100 قارئ للقرآن الكريم، بروايات مختلفة",
   "icons": [
     {
-      "src": "/android-chrome-192x192.png",
+      "src": "img/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/android-chrome-512x512.png",
+      "src": "img/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
