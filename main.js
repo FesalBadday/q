@@ -48,7 +48,6 @@ const fetchRiwayat = async () => {
   const storedRiwayatData = sessionStorage.getItem('riwayatData');
 
   if (storedRiwayatData) {
-    //console.log('Data retrieved from sessionStorage:', JSON.parse(storedRiwayatData));
     riwayatData = JSON.parse(storedRiwayatData)
     return JSON.parse(storedRiwayatData);
   }
@@ -64,7 +63,6 @@ const fetchRiwayat = async () => {
     // Store data in sessionStorage
     sessionStorage.setItem('riwayatData', JSON.stringify(fetchedRiwayatData));
 
-    //console.log('Data fetched and stored:', fetchedRiwayatData);
     riwayatData = fetchedRiwayatData
     return fetchedRiwayatData;
   } catch (error) {
@@ -107,8 +105,7 @@ const processRecitersData = () => {
     listLetter.setAttribute("id", `letter_${letter}`)
     const innerList = document.createElement("ul");
     innerList.classList.add("reciterContainer")
-    //listItem.textContent = `${letter}: `;
-    // Add each name as a separate list item
+
     for (const reciter of uniqueLetters[letter]) {
       const nameItem = document.createElement("li");
       nameItem.classList.add("reciterBox")
@@ -216,8 +213,7 @@ const processUpdatedRecitersData = (rewayaName) => {
     listLetter.setAttribute("id", `letter_${letter}`)
     const innerList = document.createElement("ul");
     innerList.classList.add("reciterContainer")
-    //listItem.textContent = `${letter}: `;
-    // Add each name as a separate list item
+
     for (const reciter of uniqueLetters[letter]) {
       const nameItem = document.createElement("li");
       nameItem.classList.add("reciterBox")
@@ -268,7 +264,6 @@ const showSuggestions = (list) => {
     listLetter.setAttribute("id", `letter_${letter}`);
     const innerList = document.createElement("ul");
     innerList.classList.add("reciterContainer")
-    //listItem.textContent = `${letter}: `;
 
     for (const reciter of reciters) {
       const nameItem = document.createElement("li");
@@ -368,8 +363,6 @@ const processRiwayatDropdown = () => {
     item.addEventListener('click', () => {
       const input = item.closest('.dropdown').querySelector('input').value
       processUpdatedRecitersData(input)
-      //let rewayaId = item.id
-      //loadRecitersData(rewayaId)
     });
   });
 }
