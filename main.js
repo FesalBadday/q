@@ -14,11 +14,11 @@ const boxNames_UI_SELECTOR = '.namesContainer';
 const boxNames_uiElement = document.querySelector(boxNames_UI_SELECTOR);
 
 const fetchReciters = async () => {
-  // Check if data is already in sessionStorage
-  const storedRecitersData = sessionStorage.getItem('recitersData');
+  // Check if data is already in localStorage
+  const storedRecitersData = localStorage.getItem('recitersData');
 
   if (storedRecitersData) {
-    console.log('Data retrieved from sessionStorage:', JSON.parse(storedRecitersData));
+    console.log('Data retrieved from localStorage:', JSON.parse(storedRecitersData));
     recitersData = JSON.parse(storedRecitersData)
     return JSON.parse(storedRecitersData);
   }
@@ -31,8 +31,8 @@ const fetchReciters = async () => {
 
     const fetchedRecitersData = await response.json();
 
-    // Store data in sessionStorage
-    sessionStorage.setItem('recitersData', JSON.stringify(fetchedRecitersData));
+    // Store data in localStorage
+    localStorage.setItem('recitersData', JSON.stringify(fetchedRecitersData));
 
     console.log('Data fetched and stored:', fetchedRecitersData);
     recitersData = fetchedRecitersData
@@ -44,8 +44,8 @@ const fetchReciters = async () => {
 }
 
 const fetchRiwayat = async () => {
-  // Check if data is already in sessionStorage
-  const storedRiwayatData = sessionStorage.getItem('riwayatData');
+  // Check if data is already in localStorage
+  const storedRiwayatData = localStorage.getItem('riwayatData');
 
   if (storedRiwayatData) {
     riwayatData = JSON.parse(storedRiwayatData)
@@ -60,8 +60,8 @@ const fetchRiwayat = async () => {
 
     const fetchedRiwayatData = await response.json();
 
-    // Store data in sessionStorage
-    sessionStorage.setItem('riwayatData', JSON.stringify(fetchedRiwayatData));
+    // Store data in localStorage
+    localStorage.setItem('riwayatData', JSON.stringify(fetchedRiwayatData));
 
     riwayatData = fetchedRiwayatData
     return fetchedRiwayatData;
@@ -95,7 +95,7 @@ const processRecitersData = () => {
     filteredSuggestions.push({ id: id, letter: letter, name: name, moshaf_name: moshaf.name.split('-')[0], server_name: moshaf.server.split('/')[3] === "malaysia" ? moshaf.server.split('/')[4] : moshaf.server.split('/')[3], server: moshaf.server, surah_total: moshaf.surah_total, surah_list: moshaf.surah_list });
   }
   console.log(filteredSuggestions)
-  sessionStorage.setItem('reciterInfo', JSON.stringify(uniqueLetters))
+  localStorage.setItem('reciterInfo', JSON.stringify(uniqueLetters))
 
   // Create an ordered list and add list items for each unique letter
   for (const letter in uniqueLetters) {
@@ -205,7 +205,7 @@ const processUpdatedRecitersData = (rewayaName) => {
     uniqueLetters[letter].push({ id: id, name: name, moshaf_name: moshaf_name, server_name: server_name, server: server, surah_total: surah_total, surah_list: surah_list });
   }
 
-  sessionStorage.setItem('reciterInfo', JSON.stringify(uniqueLetters))
+  localStorage.setItem('reciterInfo', JSON.stringify(uniqueLetters))
 
   for (const letter in uniqueLetters) {
     const listItem = document.createElement("div");

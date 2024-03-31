@@ -15,11 +15,11 @@ let filteredSuggestions = []
 const loader = document.querySelector('.loader')
 
 const fetchSuwar = async () => {
-  // Check if data is already in sessionStorage
-  const storedSuwarData = sessionStorage.getItem('suwarData');
+  // Check if data is already in localStorage
+  const storedSuwarData = localStorage.getItem('suwarData');
 
   if (storedSuwarData) {
-    console.log('Data retrieved from sessionStorage:', JSON.parse(storedSuwarData));
+    console.log('Data retrieved from localStorage:', JSON.parse(storedSuwarData));
     suwarData = JSON.parse(storedSuwarData)
     return JSON.parse(storedSuwarData);
   }
@@ -32,8 +32,8 @@ const fetchSuwar = async () => {
 
     const fetchedSuwarData = await response.json();
 
-    // Store data in sessionStorage
-    sessionStorage.setItem('suwarData', JSON.stringify(fetchedSuwarData));
+    // Store data in localStorage
+    localStorage.setItem('suwarData', JSON.stringify(fetchedSuwarData));
 
     console.log('Data fetched and stored:', fetchedSuwarData);
     suwarData = fetchedSuwarData
@@ -45,11 +45,11 @@ const fetchSuwar = async () => {
 }
 
 const fetchReciter = async () => {
-  // Check if data is already in sessionStorage
-  const storedReciterSuwar = sessionStorage.getItem('reciterSuwar');
+  // Check if data is already in localStorage
+  const storedReciterSuwar = localStorage.getItem('reciterSuwar');
 
   try {
-    const reciterInfo = JSON.parse(sessionStorage.getItem('reciterInfo'))
+    const reciterInfo = JSON.parse(localStorage.getItem('reciterInfo'))
     const nameFromUrl = window.location.search.substring(1); // Remove the leading slash
 
     for (const reciterId in reciterInfo) {
@@ -65,8 +65,8 @@ const fetchReciter = async () => {
 
     const fetchedReciterSuwar = await response.json();
 
-    // Store data in sessionStorage
-    sessionStorage.setItem('reciterSuwar', JSON.stringify(fetchedReciterSuwar));
+    // Store data in localStorage
+    localStorage.setItem('reciterSuwar', JSON.stringify(fetchedReciterSuwar));
 
     console.log('Data fetched and stored:', fetchedReciterSuwar);
     reciterSuwar = fetchedReciterSuwar
