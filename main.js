@@ -299,9 +299,9 @@ const loadRecitersRiwayatData = async () => {
       console.error('An error occurred while fetching Riwayat data:', error);
       return false;
     });
-    if (recitersDataExists) processRecitersData();
-    if (riwayatDataExists) processRiwayatData();
-    loader.style.display = 'none'
+    //if (recitersDataExists) processRecitersData();
+    //if (riwayatDataExists) processRiwayatData();
+    //loader.style.display = 'none'
     document.querySelector(".mainPage").style.display = 'flex'
     if (!recitersDataExists && !riwayatDataExists) console.error('Reciters/Riwayat data is not available.');
   } catch (error) {
