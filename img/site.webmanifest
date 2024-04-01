@@ -20,6 +20,6 @@
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": "/q/",
-  "start_page": "./",
+  "start_page": "https://fesal.me/q/",
   "lang": "ar"
 }
