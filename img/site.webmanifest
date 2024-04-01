@@ -19,7 +19,7 @@
   "background_color": "#000",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "./",
+  "scope": "/q/",
   "start_page": "./",
   "lang": "ar"
 }
