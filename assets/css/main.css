@@ -10,7 +10,7 @@ body {
   font-family: "Noto Kufi Arabic", sans-serif;
   font-weight: 700;
   direction: rtl;
-  background: url(img/image10.png) center center/100vh scroll;
+  background: url(/assets/img/bg.png) center center/100vh scroll;
   background-color: #041b23;
   margin: 0;
 }
