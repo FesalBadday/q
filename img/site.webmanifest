@@ -1,6 +1,6 @@
 {
-  "name": "القرأن الكريم",
-  "short_name": "قرأن",
+  "name": "القرآن الكريم",
+  "short_name": "القرآن الكريم",
   "start_url": "https://fesal.me/q/",
   "description": "الأستماع الى القرآن الكريم بتلاوة وصوت أكثر من 100 قارئ للقرآن الكريم، بروايات مختلفة",
   "icons": [
@@ -15,7 +15,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "theme_color": "#000",
+  "background_color": "#000",
+  "display": "fullscreen"
 }
