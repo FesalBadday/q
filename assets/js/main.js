@@ -239,7 +239,16 @@ input.addEventListener("input", e => {
   const userData = e.target.value.toLowerCase();
   boxNames_uiElement.innerHTML = ''
   document.querySelector('.lettersContainer').innerHTML = ''
-  showSuggestions(filteredSuggestions.filter(data => data.name.toLowerCase().match(userData)));
+  //userData = userData.replace(/([أآإا])/g, '<span style="color:red">$1</span>')
+  //showSuggestions(filteredSuggestions.filter(data => data.name.toLowerCase().match(userData)));
+
+  const filteredNames = filteredSuggestions.filter(data => {
+    const lowerCaseName = data.name.toLowerCase();
+    return lowerCaseName.localeCompare(userData, "ar", { sensitivity: "base" }) === 0;
+  });
+
+  showSuggestions(filteredNames);
+
 })
 
 const showSuggestions = (list) => {
