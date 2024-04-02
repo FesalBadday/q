@@ -368,65 +368,11 @@ const processRiwayatDropdown = () => {
   });
 }
 
-/* let installButton = document.getElementById('installApp');
-let deferredPrompt;
-
-function showInAppInstallPromotion() {
-  // Update your UI to notify the user they can install the PWA
-  installButton.style.display = 'block';
-}
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome's default install prompt
-  e.preventDefault();
-
-  // Save the event for later use
-  deferredPrompt = e;
-
-  // Update your UI to notify the user they can install the PWA
-  showInAppInstallPromotion();
-});
-
-installButton.addEventListener('click', () => {
-  if (!deferredPrompt) return;
-
-  // Show the install prompt
-  deferredPrompt.prompt();
-
-  // Wait for the user to respond to the prompt
-  deferredPrompt.userChoice.then((choiceResult) => {
-    if (choiceResult.outcome === 'accepted') {
-      console.log('User accepted the install prompt');
-    } else {
-      console.log('User dismissed the install prompt');
-    }
-  });
-}); */
-
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome's default install prompt
-  e.preventDefault();
-
-  // Save the event for later use
-  deferredPrompt = e;
-
-  // Check if it's the first visit
-  if (!localStorage.getItem('firstVisit')) {
-    // Show the install prompt
-    deferredPrompt.prompt();
-
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-      } else {
-        console.log('User dismissed the install prompt');
-      }
-    });
-
-    // Set 'firstVisit' item in localStorage
-    localStorage.setItem('firstVisit', 'no');
+window.addEventListener('load', function() {
+  var visited = document.cookie.replace(/(?:(?:^|.*;\s*)visited\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+  if (!visited) {
+    // Your install prompt code here
+    console.log("This is your first visit");
+    document.cookie = "visited=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   }
 });
