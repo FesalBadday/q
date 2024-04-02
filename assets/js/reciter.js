@@ -129,7 +129,7 @@ const loadSuwarData = async () => {
 loadSuwarData()
 
 input.addEventListener("input", e => {
-  const userData = e.target.value.toLowerCase();
+  const userData = e.target.value.toLowerCase().replace(/ا/g, "[اأإ]");
   document.querySelector('.surahList').innerHTML = ''
   showSuggestions(filteredSuggestions.filter(data => data.surahName.toLowerCase().match(userData) || data.surahNumber.match(userData)));
 })
