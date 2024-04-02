@@ -298,7 +298,7 @@ const loadRecitersRiwayatData = async () => {
     if (recitersDataExists) processRecitersData();
     if (riwayatDataExists) processRiwayatData();
     loader.style.display = 'none'
-    document.querySelector(".mainPage").style.display = 'flex'
+    installPrompt()
     if (!recitersDataExists && !riwayatDataExists) console.error('Reciters/Riwayat data is not available.');
   } catch (error) {
     console.error('An error occurred while loading Reciters/Riwayat data:', error);
@@ -376,6 +376,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
   // Stash the event so it can be triggered later.
   deferredPrompt = e;
 });
+
 document.querySelector('.install-button').addEventListener('click', () => {
   deferredPrompt.prompt()
   hidePrompt();
@@ -392,13 +393,17 @@ document.querySelector('.close-button').addEventListener('click', () => {
 const hidePrompt = () => {
   // Hide the installation prompt
   document.querySelector('#pawPrompt').style.display = 'none';
+  document.querySelector(".mainPage").style.display = 'flex'
+  document.querySelector(".namesContainers").style.display = 'flex'
 }
 
 // Check if the prompt should be hidden (based on user's previous choice)
-const storedChoice = localStorage.getItem('pawPromptChoice');
-if (storedChoice === 'install' || storedChoice === 'close') {
-  document.querySelector('#pawPrompt').style.display = 'none';
-  hidePrompt();
-} else {
-  document.querySelector('#pawPrompt').style.display = 'block';
+const installPrompt = () => {
+  const storedChoice = localStorage.getItem('pawPromptChoice');
+  if (storedChoice === 'install' || storedChoice === 'close') {
+    document.querySelector('#pawPrompt').style.display = 'none';
+    hidePrompt();
+  } else {
+    document.querySelector('#pawPrompt').style.display = 'block';
+  }
 }
