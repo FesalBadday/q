@@ -341,6 +341,43 @@ a:hover {
   border-radius: 50%;
 }
 
+.prompt-container {
+  display: none;
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: ghostwhite;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.install-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: ghostwhite;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.close-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff0000;
+  color: ghostwhite;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 @keyframes animate {
   0% {
     transform: rotate(0deg);

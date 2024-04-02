@@ -368,43 +368,6 @@ const processRiwayatDropdown = () => {
   });
 }
 
-/* let installButton = document.getElementById('installApp');
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome's default install prompt
-  e.preventDefault();
-
-  // Save the event for later use
-  deferredPrompt = e;
-});
-
-window.addEventListener('load', () => {
-  alert("hi")
-  deferredPrompt.prompt();
-});
-
-
-window.addEventListener('load', function () {
-  var visited = document.cookie.replace(/(?:(?:^|.*;\s*)visited\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-  if (visited) {
-    if (!deferredPrompt) return;
-
-    // Show the install prompt
-    deferredPrompt.prompt();
-
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-      } else {
-        console.log('User dismissed the install prompt');
-      }
-    });
-    //document.cookie = "visited=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
-  }
-}); */
-
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -412,20 +375,30 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   // Stash the event so it can be triggered later.
   deferredPrompt = e;
-  // Update UI notify the user they can install the PWA
-  showInstallPromotion();
 });
+document.querySelector('.install-button').addEventListener('click', () => {
+  deferredPrompt.prompt()
+  hidePrompt();
+  // Store user's choice in localStorage
+  localStorage.setItem('pawPromptChoice', 'install');
+})
 
-window.onload = function() {
-  if(deferredPrompt) {
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-      } else {
-        console.log('User dismissed the install prompt');
-      }
-    });
-  }
-};
+document.querySelector('.close-button').addEventListener('click', () => {
+  hidePrompt();
+  // Store user's choice in localStorage
+  localStorage.setItem('pawPromptChoice', 'close');
+})
+
+const hidePrompt = () => {
+  // Hide the installation prompt
+  document.querySelector('#pawPrompt').style.display = 'none';
+}
+
+// Check if the prompt should be hidden (based on user's previous choice)
+const storedChoice = localStorage.getItem('pawPromptChoice');
+if (storedChoice === 'install' || storedChoice === 'close') {
+  document.querySelector('#pawPrompt').style.display = 'none';
+  hidePrompt();
+} else {
+  document.querySelector('#pawPrompt').style.display = 'block';
+}
