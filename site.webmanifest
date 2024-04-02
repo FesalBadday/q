@@ -46,6 +46,6 @@
   "display": "fullscreen",
   "orientation": "portrait",
   "scope": "./",
-  "start_page": "./index.html",
+  "start_page": "./q/",
   "lang": "ar"
 }

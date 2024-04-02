@@ -350,3 +350,12 @@ a:hover {
     transform: rotate(360deg);
   }
 }
+
+#installInstructions {
+  display: none
+}
+@media (display-mode: browser) {
+  #installInstructions {
+    display: block
+  }
+}
