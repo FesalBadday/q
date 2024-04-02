@@ -372,7 +372,10 @@ window.addEventListener('load', function() {
   var visited = document.cookie.replace(/(?:(?:^|.*;\s*)visited\s*\=\s*([^;]*).*$)|^.*$/, "$1");
   if (!visited) {
     // Your install prompt code here
-    console.log("This is your first visit");
+    showInstallPrompt();
+    document.cookie = "visited=yes";
+  } else {
+    setupDropdowns();
     document.cookie = "visited=true; expires=Fri, 31 Dec 9999 23:59:59 GMT";
   }
 });
